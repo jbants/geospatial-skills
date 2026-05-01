@@ -1,109 +1,47 @@
-<div class="skill-hero" markdown>
-  <span class="skill-hero-icon">📐</span>
+---
+template: skill.html
+title: GeoParquet Validation
+slug: geoparquet-validation
+tag: CLOUD-NATIVE
+install_skill: geoparquet-validation
+upstream:
+  - label: geoparquet-io/geoparquet-skill
+    href: https://github.com/geoparquet-io/geoparquet-skill
+version: "0.1.0"
+license: Apache-2.0
+requires: "<code>gpio</code> (geoparquet-io); DuckDB optional for SQL"
+summary: >-
+  Inspect, validate, optimize, and distribute GeoParquet data with
+  <code>gpio</code>. Centered on the <code>gpio</code> toolchain &mdash;
+  inspection, auto-fix validation, conversion with sane defaults, partitioning,
+  and STAC publishing &mdash; with DuckDB available for heavier SQL.
+features:
+  - "Inspect metadata and stats: <code>gpio inspect</code>, <code>gpio inspect stats</code>"
+  - "Validate &amp; auto-fix: <code>gpio check all</code> (with <code>--fix</code>)"
+  - "Convert with GeoParquet defaults: <code>gpio convert geoparquet</code>"
+  - "Extract by bbox or predicate: <code>gpio extract --bbox</code> / <code>--where</code>"
+  - "Partition large datasets: <code>gpio partition kdtree</code>"
+  - "Publish to STAC and upload: <code>gpio publish stac</code> / <code>publish upload</code>"
+example_html: |
+  <span class="com"># inspect, then validate-and-fix in place</span>
+  <span class="dim">$</span> gpio inspect stats <span class="arg">data.parquet</span>
+  <span class="dim">$</span> gpio check all <span class="arg">data.parquet</span> --fix --output <span class="arg">fixed.parquet</span>
 
-# GeoParquet Validation
+  <span class="com"># convert to optimal GeoParquet defaults</span>
+  <span class="dim">$</span> gpio convert geoparquet <span class="arg">input.fgb</span> <span class="arg">output.parquet</span> \
+      --compression-level 15
 
-</div>
-
-Inspect, validate, optimize, and distribute GeoParquet data with `gpio`.
-
-<div class="skill-callout">
-  <p class="skill-callout-label">Tools</p>
-  <p><code>gpio</code> first. DuckDB for heavier SQL.</p>
-</div>
-
-## Install
-
-=== "Universal"
-
-    ```bash
-    cp -R skills/geoparquet-validation ~/.agent/skills/geoparquet-validation
-    ```
-
-=== "Claude"
-
-    ```bash
-    /plugin marketplace add isaaccorley/geospatial-skills
-    /plugin install geoparquet-validation@geospatial-skills
-    ```
-
-    CLI:
-
-    ```bash
-    claude plugin marketplace add isaaccorley/geospatial-skills
-    claude plugin install geoparquet-validation@geospatial-skills
-    ```
-
-## Prerequisites
-
-Install `gpio` first:
-
-```bash
-pipx install --pre geoparquet-io
-```
-
-Alternatives:
-
-```bash
-pip install --pre geoparquet-io
-uv pip install --pre geoparquet-io
-```
-
-Verify:
-
-```bash
-gpio --version
-```
-
-## Workflow
-
-1. Inspect source format, CRS, geometry type, and size.
-1. Convert with GeoParquet defaults.
-1. Validate output.
-1. Optimize sorting, row groups, and partitioning if the dataset is large.
-1. Publish with STAC metadata when needed.
-
-## Essential commands
-
-```bash
-# Inspect
-gpio inspect <file>
-gpio inspect stats <file>
-
-# Convert
-gpio convert geoparquet <input> <output>
-gpio convert geoparquet <input> <output> --compression-level 15
-
-# Validate
-gpio check all <file>
-gpio check all <file> --fix --output <fixed>
-
-# Extract
-gpio extract <input> <output> --bbox "minx,miny,maxx,maxy"
-gpio extract <input> <output> --where "column > value"
-
-# Partition + publish
-gpio partition kdtree <input> <output_dir> --max-rows-per-file 500000
-gpio publish stac <input> <output.json>
-```
-
-## Distribution checklist
-
-- zstd compression level 15
-- Hilbert sorting
-- bbox column plus covering metadata
-- row groups in the 50k to 150k range
-- partitioning for very large datasets
-- `gpio check all` before publish
-
-## Source
-
-<div class="source-panel" markdown>
-
-- Skill: [skills/geoparquet-validation/SKILL.md](https://github.com/isaaccorley/geospatial-skills/blob/main/skills/geoparquet-validation/SKILL.md)
-- Command reference: [skills/geoparquet-validation/references/gpio-commands.md](https://github.com/isaaccorley/geospatial-skills/blob/main/skills/geoparquet-validation/references/gpio-commands.md)
-- Best practices: [skills/geoparquet-validation/references/distribution-best-practices.md](https://github.com/isaaccorley/geospatial-skills/blob/main/skills/geoparquet-validation/references/distribution-best-practices.md)
-- Tool comparison: [skills/geoparquet-validation/references/tool-comparison.md](https://github.com/isaaccorley/geospatial-skills/blob/main/skills/geoparquet-validation/references/tool-comparison.md)
-- Upstream reference: [geoparquet-io/geoparquet-skill](https://github.com/geoparquet-io/geoparquet-skill)
-
-</div>
+  <span class="com"># partition a large dataset and publish a STAC summary</span>
+  <span class="dim">$</span> gpio partition kdtree <span class="arg">big.parquet</span> <span class="arg">parts/</span> --max-rows-per-file 500000
+  <span class="dim">$</span> gpio publish stac <span class="arg">parts/</span> <span class="arg">stac.json</span>
+prev:
+  slug: gdal
+  name: GDAL
+next:
+  slug: geozarr
+  name: GeoZarr
+hide:
+  - toc
+  - navigation
+  - footer
+---

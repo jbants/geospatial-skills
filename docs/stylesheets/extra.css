@@ -1,347 +1,128 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=DM+Serif+Text&display=swap");
-
-/* ── Earthy palette ─────────────────────────────────────────── */
+/* Shared styles for geospatial-skills site */
 :root {
-  --geo-bg: #0d110e;
-  --geo-panel: rgba(16, 22, 17, 0.84);
-  --geo-panel-strong: rgba(12, 18, 13, 0.96);
-  --geo-fg: #e8eedf;
-  --geo-fg-muted: #9aa88e;
-  --geo-green: #a8c5a0;
-  --geo-olive: #c4b57a;
-  --geo-ochre: #d4a853;
-  --geo-line: rgba(168, 197, 160, 0.10);
-  --geo-line-warm: rgba(196, 181, 122, 0.08);
+  --bg: oklch(0.16 0.012 160); --ink: oklch(0.95 0.005 160);
+  --ink-2: oklch(0.78 0.008 160); --ink-3: oklch(0.55 0.01 160);
+  --line: oklch(1 0 0 / 0.07); --accent: oklch(0.80 0.16 155);
+  --accent-dim: oklch(0.80 0.16 155 / 0.18);
+  --m: "JetBrains Mono", monospace; --s: "Inter Tight", sans-serif;
 }
 
-[data-md-color-scheme="default"],
-[data-md-color-scheme="slate"] {
-  --md-default-bg-color: var(--geo-bg);
-  --md-default-fg-color: var(--geo-fg);
-  --md-default-fg-color--light: var(--geo-fg-muted);
-  --md-primary-fg-color: #0a0f0b;
-  --md-primary-bg-color: var(--geo-fg);
-  --md-accent-fg-color: var(--geo-ochre);
-  --md-typeset-a-color: var(--geo-green);
-  --md-code-bg-color: rgba(168, 197, 160, 0.07);
+/* Hide all mkdocs-material chrome — pages render fully custom */
+html, body, .md-container, .md-main, .md-main__inner, .md-content, .md-content__inner {
+  background: var(--bg) !important;
+  color: var(--ink);
 }
+body { font-family: var(--m); font-size: 13px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.md-header, .md-tabs, .md-sidebar, .md-footer, .md-content__button, .md-search, .md-skip { display: none !important; }
+.md-main__inner { margin-top: 0 !important; }
+.md-content__inner { padding: 0 !important; margin: 0 !important; }
+.md-content__inner::before { display: none !important; }
+.md-grid { max-width: 100% !important; }
 
-/* ── Typography ─────────────────────────────────────────────── */
-body,
-input,
-.md-typeset {
-  font-family: "IBM Plex Sans", sans-serif;
-}
+*{box-sizing:border-box}
+.wrap{max-width:760px;margin:0 auto;padding:48px 36px 80px}
 
-.md-typeset h1 {
-  font-family: "DM Serif Text", serif;
-  letter-spacing: -0.02em;
-}
+/* Header */
+.head{display:flex;align-items:center;gap:14px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:36px}
+.globe-mini{width:36px;height:36px;border-radius:50%;border:1px solid oklch(0.80 0.16 155 / 0.4);position:relative;flex-shrink:0;
+  background:radial-gradient(circle at 35% 30%, oklch(0.32 0.07 155 / 0.6), oklch(0.18 0.02 160 / 0.9) 70%);
+  box-shadow:0 0 12px oklch(0.80 0.16 155 / 0.15), inset -3px -4px 8px oklch(0 0 0 / 0.3), inset 2px 3px 6px oklch(0.80 0.16 155 / 0.08);
+  overflow:hidden;text-decoration:none;display:block}
+.globe-mini::before,.globe-mini::after{content:"";position:absolute;border:0.5px solid oklch(0.80 0.16 155 / 0.25);border-radius:50%;inset:0;pointer-events:none}
+.globe-mini::before{transform:scaleY(0.35)}
+.globe-mini::after{transform:scaleX(0.35)}
+.brand{font-size:11.5px;text-decoration:none;color:inherit}
+.brand b{color:var(--accent);font-weight:500}
+.brand .v{color:var(--ink-3);margin-left:8px}
+.head .meta{margin-left:auto;color:var(--ink-3);font-size:10.5px;display:flex;gap:14px;align-items:center}
+.head .meta a{color:var(--ink-2);text-decoration:none}
+.head .meta a:hover{color:var(--accent)}
 
-/* ── Header ─────────────────────────────────────────────────── */
-.md-header,
-.md-tabs {
-  background: rgba(10, 15, 11, 0.92);
-  backdrop-filter: blur(10px);
-}
+/* Breadcrumb (detail pages) */
+.crumb{font-size:10.5px;color:var(--ink-3);letter-spacing:0.06em;margin-bottom:14px;display:flex;gap:8px;align-items:baseline}
+.crumb a{color:var(--ink-2);text-decoration:none}
+.crumb a:hover{color:var(--accent)}
+.crumb .sep{color:var(--ink-3);opacity:0.5}
+.crumb .here{color:var(--accent)}
 
-/* ── Background: topo grid ──────────────────────────────────── */
-.md-main {
-  background:
-    radial-gradient(circle at 20% 10%, rgba(168, 197, 160, 0.06), transparent 18%),
-    radial-gradient(circle at 80% 0%, rgba(196, 181, 122, 0.04), transparent 22%),
-    linear-gradient(180deg, rgba(168, 197, 160, 0.03), transparent 30%),
-    repeating-linear-gradient(0deg, transparent 0 38px, var(--geo-line) 38px 39px),
-    repeating-linear-gradient(90deg, transparent 0 38px, var(--geo-line) 38px 39px),
-    var(--geo-bg);
-  background-attachment: fixed;
-}
+/* Intro */
+.intro{margin-bottom:36px}
+.intro h1{font-family:var(--s);font-weight:500;font-size:18px;color:var(--ink);margin:0 0 4px;letter-spacing:-0.005em}
+.intro p{color:var(--ink-3);margin:0;font-size:12.5px}
 
-.md-content__inner {
-  padding-bottom: 3rem;
-}
+/* Detail page hero */
+.skill-head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:6px}
+.skill-head h1{font-family:var(--s);font-weight:500;font-size:24px;color:var(--ink);margin:0;letter-spacing:-0.01em}
+.skill-head .id{color:var(--ink-3);font-size:10.5px;letter-spacing:0.1em;text-align:right;flex-shrink:0;padding-top:8px}
+.skill-head .id .accent{color:var(--accent)}
+.skill-tag{display:inline-block;color:var(--accent);font-size:10px;letter-spacing:0.1em;padding:2px 8px;border:1px solid var(--accent-dim);border-radius:3px;margin-bottom:14px}
+.skill-summary{color:var(--ink-2);font-size:13.5px;margin:0 0 36px;max-width:62ch;line-height:1.6;font-family:var(--s)}
 
-/* ── Hero ───────────────────────────────────────────────────── */
-.hero-shell {
-  margin: 0.5rem 0 2rem;
-  padding: 1.2rem 0 1.6rem;
-  border-bottom: 1px solid var(--geo-line);
-  position: relative;
-}
+/* Section heading */
+.sec{color:var(--ink-3);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;margin:36px 0 12px;display:flex;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.sec .accent{color:var(--accent)}
+.sec:first-of-type{margin-top:0}
 
-.hero-shell h1 {
-  margin: 0 0 0.55rem;
-  font-size: clamp(2.4rem, 6vw, 4.8rem);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-}
+/* Install block */
+.install{margin-bottom:32px;border:1px solid var(--line);border-radius:6px;background:oklch(0.13 0.01 160 / 0.6);overflow:hidden}
+.install .tabs{display:flex;border-bottom:1px solid var(--line)}
+.install .tabs button{flex:1;background:transparent;border:0;color:var(--ink-3);padding:9px 12px;font-family:inherit;font-size:10.5px;cursor:pointer;letter-spacing:0.06em;border-right:1px solid var(--line);transition:all 150ms}
+.install .tabs button:last-child{border-right:0}
+.install .tabs button.on{color:var(--accent);background:oklch(0.80 0.16 155 / 0.06)}
+.install .cmd{display:flex;align-items:center;gap:14px;padding:14px 16px}
+.install .cmd .line{flex:1;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12.5px}
+.install .cmd .dim{color:var(--ink-3);margin-right:8px}
+.install .cmd .arg{color:var(--accent)}
+.copy{background:transparent;border:1px solid var(--line);color:var(--ink-2);font-family:inherit;font-size:9.5px;padding:4px 8px;border-radius:4px;cursor:pointer}
+.copy:hover,.copy.ok{border-color:var(--accent);color:var(--accent)}
 
-.eyebrow,
-.skill-callout-label {
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.68rem;
-  font-weight: 600;
-  color: var(--geo-ochre);
-}
+/* Catalog rows (home page) */
+.row{display:grid;grid-template-columns:1fr 130px 18px;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line);cursor:pointer;transition:padding 200ms;text-decoration:none;color:inherit}
+.row:first-of-type{border-top:1px solid var(--line)}
+.row:hover{padding-left:6px}
+.row .id{color:var(--ink-3);font-size:10px;letter-spacing:0.06em}
+.row .name{font-family:var(--s);font-weight:500;font-size:14.5px;color:var(--ink)}
+.row .desc{color:var(--ink-2);font-size:11.5px;margin-top:2px;line-height:1.45}
+.row .tag{font-size:9.5px;color:var(--ink-3);letter-spacing:0.06em;text-align:right}
+.row:hover .tag{color:var(--accent)}
+.row .arrow{color:var(--ink-3);font-size:11px;transition:all 200ms;text-align:right}
+.row:hover .arrow{color:var(--accent);transform:translateX(2px)}
 
-.hero-lead {
-  max-width: 36rem;
-  color: var(--geo-fg-muted);
-}
+/* Feature list (detail) */
+.features{list-style:none;padding:0;margin:0 0 20px}
+.features li{display:flex;align-items:baseline;gap:12px;padding:8px 0;color:var(--ink-2);font-size:12.5px;border-bottom:1px solid var(--line)}
+.features li:first-child{border-top:1px solid var(--line)}
+.features li::before{content:"+";color:var(--accent);font-weight:500;flex:0 0 6px}
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-top: 1rem;
-}
+/* Code blocks (detail) */
+pre.code{background:oklch(0.13 0.01 160 / 0.7);border:1px solid var(--line);border-radius:6px;padding:14px 16px;color:var(--ink);font-size:12.5px;overflow-x:auto;margin:12px 0 24px;line-height:1.6;font-family:var(--m)}
+pre.code .dim{color:var(--ink-3)}
+pre.code .arg{color:var(--accent)}
+pre.code .com{color:var(--ink-3);font-style:italic}
 
-.hero-button,
-.hero-link {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 999px;
-  padding: 0.7rem 0.95rem;
-  text-decoration: none;
-  border: 1px solid var(--geo-line);
-  transition: transform 180ms, box-shadow 180ms;
-}
+/* Meta grid (detail) */
+.meta-grid{display:grid;grid-template-columns:140px 1fr;gap:6px 18px;font-size:12px;margin:0 0 32px}
+.meta-grid dt{color:var(--ink-3);letter-spacing:0.04em}
+.meta-grid dd{color:var(--ink-2);margin:0}
+.meta-grid dd a{color:var(--ink);text-decoration:underline;text-decoration-color:oklch(1 0 0 / 0.15);text-underline-offset:3px}
+.meta-grid dd a:hover{color:var(--accent);text-decoration-color:var(--accent)}
 
-.hero-button {
-  background: linear-gradient(180deg, var(--geo-ochre), #b8923a);
-  border-color: transparent;
-  color: #0a0f0b !important;
-  font-weight: 600;
-}
+/* Detail nav (prev/next) */
+.skillnav{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:48px 0 0}
+.skillnav a{display:block;padding:14px 16px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:inherit;transition:all 150ms}
+.skillnav a:hover{border-color:oklch(0.80 0.16 155 / 0.3);background:oklch(0.13 0.01 160 / 0.4)}
+.skillnav a .dir{color:var(--ink-3);font-size:10px;letter-spacing:0.1em;display:block;margin-bottom:4px}
+.skillnav a .name{font-family:var(--s);font-weight:500;font-size:13.5px;color:var(--ink)}
+.skillnav a:hover .dir{color:var(--accent)}
+.skillnav a.next{text-align:right}
+.skillnav a.empty{visibility:hidden}
 
-.hero-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(212, 168, 83, 0.25);
-}
+/* Footer */
+.foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--ink-3);font-size:10.5px}
+.foot a{color:var(--ink-2);text-decoration:none}
+.foot a:hover{color:var(--accent)}
 
-.hero-link:hover {
-  border-color: var(--geo-green);
-}
-
-/* ── Contour animation (hero) ───────────────────────────────── */
-.hero-contour {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 260px;
-  height: 200px;
-  opacity: 0.12;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.hero-contour svg {
-  width: 100%;
-  height: 100%;
-  animation: contour-drift 20s ease-in-out infinite alternate;
-}
-
-@keyframes contour-drift {
-  from { transform: translateY(0) scale(1); }
-  to   { transform: translateY(-8px) scale(1.03); }
-}
-
-/* ── Catalog card grid ──────────────────────────────────────── */
-.md-typeset .catalog-grid {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-@media (max-width: 960px) {
-  .md-typeset .catalog-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* MkDocs wraps <a> in <p> — flatten so grid sees cards directly */
-.md-typeset .catalog-grid > p,
-.catalog-grid > p {
-  display: contents !important;
-  margin: 0 !important;
-}
-
-.md-typeset div.catalog-grid > p {
-  display: contents !important;
-}
-
-.catalog-card {
-  background: var(--geo-panel);
-  backdrop-filter: blur(12px) saturate(130%);
-  border: 1px solid var(--geo-line);
-  border-radius: 14px;
-  padding: 1.2rem 1.1rem 1rem;
-  text-decoration: none !important;
-  color: var(--geo-fg) !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-  transition: transform 200ms, box-shadow 200ms, border-color 200ms;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  animation: fadeSlideUp 360ms ease-out both;
-  animation-delay: calc(var(--i, 0) * 60ms);
-  height: 100%;
-}
-
-.catalog-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.3);
-  border-color: rgba(168, 197, 160, 0.22);
-}
-
-.catalog-card-icon {
-  font-size: 1.6rem;
-  line-height: 1;
-}
-
-.catalog-card-name {
-  font-family: "DM Serif Text", serif;
-  font-size: 1.15rem;
-  letter-spacing: -0.01em;
-}
-
-.catalog-card-desc {
-  font-size: 0.82rem;
-  color: var(--geo-fg-muted);
-  line-height: 1.45;
-}
-
-.catalog-card-tag {
-  display: inline-block;
-  font-size: 0.62rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--geo-ochre);
-  background: rgba(212, 168, 83, 0.1);
-  padding: 2px 8px;
-  border-radius: 4px;
-  margin-top: auto;
-  align-self: flex-start;
-}
-
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: none; }
-}
-
-/* ── Skill page hero icon ───────────────────────────────────── */
-.skill-hero {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  margin-bottom: 0.3rem;
-}
-
-.skill-hero-icon {
-  font-size: 2rem;
-  line-height: 1;
-  opacity: 0.85;
-}
-
-/* ── Skill callout ──────────────────────────────────────────── */
-.skill-callout {
-  border: 1px solid var(--geo-line);
-  background: var(--geo-panel);
-  border-radius: 1rem;
-  padding: 0.9rem 1rem 0.8rem;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-}
-
-/* ── Terminal chrome on code blocks ─────────────────────────── */
-.md-typeset pre {
-  position: relative;
-  border: 1px solid var(--geo-line);
-  border-radius: 10px;
-  overflow: hidden;
-  padding-top: 2rem;
-  background: rgba(10, 15, 11, 0.6);
-}
-
-.md-typeset pre::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 12px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #e35b52;
-  box-shadow:
-    16px 0 0 #e6a040,
-    32px 0 0 #54b648;
-}
-
-.md-typeset pre > code {
-  background: transparent;
-}
-
-/* ── Tables ─────────────────────────────────────────────────── */
-.md-typeset table:not([class]) {
-  border-radius: 0.8rem;
-  overflow: hidden;
-  background: var(--geo-panel-strong);
-}
-
-/* ── Admonitions ────────────────────────────────────────────── */
-.md-typeset .admonition,
-.md-typeset details {
-  background: var(--geo-panel);
-  border-color: var(--geo-line);
-}
-
-/* ── Search / sidebar ───────────────────────────────────────── */
-.md-search__form,
-.md-search__output,
-.md-nav,
-.md-sidebar__scrollwrap {
-  background: transparent;
-}
-
-/* ── Source links panel ─────────────────────────────────────── */
-.source-panel {
-  background: var(--geo-panel);
-  border: 1px solid var(--geo-line);
-  border-radius: 10px;
-  padding: 0.8rem 1rem;
-  margin-top: 1rem;
-}
-
-.source-panel ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.source-panel li {
-  padding: 0.25rem 0;
-  font-size: 0.85rem;
-}
-
-.source-panel li::before {
-  content: "~ ";
-  color: var(--geo-fg-muted);
-  font-family: monospace;
-}
-
-/* ── Footer attribution ─────────────────────────────────────── */
-.md-footer {
-  border-top: 1px solid var(--geo-line-warm);
-}
-
-/* ── Responsive ─────────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .catalog-grid {
-    grid-template-columns: 1fr;
-  }
-  .hero-contour {
-    display: none;
-  }
-}
+/* Inline code */
+code{font-family:var(--m);background:oklch(0.13 0.01 160 / 0.6);color:var(--ink);padding:1px 5px;border-radius:3px;font-size:0.92em;border:1px solid var(--line)}
+a.inline{color:var(--accent);text-decoration:underline;text-decoration-color:oklch(0.80 0.16 155 / 0.4);text-underline-offset:3px}
+a.inline:hover{text-decoration-color:var(--accent)}

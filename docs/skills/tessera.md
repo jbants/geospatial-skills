@@ -1,88 +1,55 @@
-<div class="skill-hero" markdown>
-  <span class="skill-hero-icon">🛰️</span>
+---
+template: skill.html
+title: Tessera
+slug: tessera
+tag: EMBEDDINGS
+install_skill: tessera
+upstream:
+  - label: ucam-eo/geotessera
+    href: https://github.com/ucam-eo/geotessera
+  - label: lassa-sentinel/GeoTessera (R)
+    href: https://github.com/lassa-sentinel/GeoTessera
+version: "0.1.0"
+license: Apache-2.0 (skill); embeddings under the TESSERA project license
+requires: Python 3.10+ or R &ge; 4.2
+summary: >-
+  Work with TESSERA satellite embeddings via the <code>geotessera</code> CLI,
+  Python library, or R library. Covers coverage checks, point sampling, mosaic
+  building, and downloads to GeoTIFF, NPY, or Zarr so an agent can jump
+  straight to clustering, similarity search, or downstream fine-tuning.
+features:
+  - Download embeddings by bbox or region file (GeoJSON / Shapefile)
+  - "Output as GeoTIFF (default, georeferenced), NPY, or Zarr"
+  - Sample embeddings at point locations from the Python library
+  - Build mosaics for dense per-pixel raster analysis
+  - "R bindings via <code>GeoTessera</code> (<code>geotessera()</code>, <code>get_tiles</code>, <code>export_embedding_geotiffs</code>)"
+  - Coverage checks and configurable registry / cache
+example_html: |
+  <span class="com"># download as GeoTIFF (default, with georeferencing)</span>
+  <span class="dim">$</span> geotessera download \
+      --bbox <span class="arg">"-0.2,51.4,0.1,51.6"</span> \
+      --year <span class="arg">2024</span> \
+      --output <span class="arg">./london_tiffs</span>
 
-# Tessera
+  <span class="com"># or stream raw NumPy arrays with sidecar metadata</span>
+  <span class="dim">$</span> geotessera download \
+      --bbox <span class="arg">"-0.2,51.4,0.1,51.6"</span> \
+      --format <span class="arg">npy</span> --year <span class="arg">2024</span> \
+      --output <span class="arg">./london_arrays</span>
 
-</div>
-
-Work with TESSERA satellite embeddings via the CLI, Python library, or R library.
-
-<div class="skill-callout">
-  <p class="skill-callout-label">Tool</p>
-  <p><code>geotessera</code> — CLI, Python library, and R library for coverage checks, point sampling, mosaic building, downloads, and visualization.</p>
-</div>
-
-## Install
-
-=== "Universal"
-
-    ```bash
-    cp -R skills/tessera ~/.agent/skills/tessera
-    ```
-
-=== "Claude"
-
-    ```bash
-    /plugin marketplace add isaaccorley/geospatial-skills
-    /plugin install tessera@geospatial-skills
-    ```
-
-    CLI:
-
-    ```bash
-    claude plugin marketplace add isaaccorley/geospatial-skills
-    claude plugin install tessera@geospatial-skills
-    ```
-
-## Quick start
-
-### Python library (preferred for most tasks)
-
-```python
-from geotessera import GeoTessera
-
-gt = GeoTessera()
-
-# Point sampling — preferred over mosaics for sparse locations
-points = [(0.15, 52.05), (0.25, 52.15)]
-embeddings = gt.sample_embeddings_at_points(points, year=2024)
-
-# Mosaic — only for dense per-pixel analysis
-bbox = (-0.2, 51.4, 0.1, 51.6)
-mosaic, transform, crs = gt.fetch_mosaic_for_region(bbox, year=2024)
-```
-
-### R library
-
-```r
-remotes::install_github("lassa-sentinel/GeoTessera")
-library(GeoTessera)
-
-gt <- geotessera()
-tiles <- gt$get_tiles(bbox = c(-0.2, 51.4, 0.1, 51.6), year = 2024)
-gt$export_embedding_geotiffs(tiles = tiles, output_dir = "london_tiles")
-```
-
-### CLI
-
-```bash
-geotessera coverage --year 2024 --output coverage_2024.png
-geotessera download --bbox "-0.2,51.4,0.1,51.6" --year 2024 --output ./out
-geotessera download --region-file region.geojson --format npy --year 2024 --output ./arrays
-geotessera visualize ./out --type web --output ./web
-geotessera serve ./web --open
-```
-
-uv and uvx works, so you can `uvx geotessera` for zero-installation invocation.
-
-## Source
-
-<div class="source-panel" markdown>
-
-- Skill: [skills/tessera/SKILL.md](https://github.com/isaaccorley/geospatial-skills/blob/main/skills/tessera/SKILL.md)
-- CLI reference: [skills/tessera/references/geotessera-cli.md](https://github.com/isaaccorley/geospatial-skills/blob/main/skills/tessera/references/geotessera-cli.md)
-- Library reference: [skills/tessera/references/geotessera-library.md](https://github.com/isaaccorley/geospatial-skills/blob/main/skills/tessera/references/geotessera-library.md)
-- R library docs: [lassa-sentinel.github.io/GeoTessera](https://lassa-sentinel.github.io/GeoTessera)
-- Upstream: [ucam-eo/geotessera](https://github.com/ucam-eo/geotessera)
-
-</div>
+  <span class="com"># clip to a region file and pick specific bands</span>
+  <span class="dim">$</span> geotessera download \
+      --region-file <span class="arg">cambridge.geojson</span> \
+      --bands <span class="arg">"0,1,2"</span> --year <span class="arg">2024</span> \
+      --output <span class="arg">./cambridge_rgb</span>
+prev:
+  slug: geozarr
+  name: GeoZarr
+next:
+  slug: geospatial-viewers
+  name: Geospatial Viewers
+hide:
+  - toc
+  - navigation
+  - footer
+---

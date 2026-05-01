@@ -1,77 +1,47 @@
-<div class="skill-hero" markdown>
-  <span class="skill-hero-icon">🧊</span>
+---
+template: skill.html
+title: GeoZarr
+slug: geozarr
+tag: ARRAYS
+install_skill: geozarr
+upstream:
+  - label: zarr-developers/geozarr-spec
+    href: https://github.com/zarr-developers/geozarr-spec
+  - label: GDAL Zarr driver
+    href: https://gdal.org/en/latest/drivers/raster/zarr.html
+version: "0.1.0"
+license: Apache-2.0
+requires: "<code>zarr</code>, <code>xarray</code>, <code>rioxarray</code>; GDAL with Zarr driver for round-trip checks"
+summary: >-
+  Conventions guide for authoring, patching, and validating georeferenced Zarr
+  stores so they round-trip as rasters through xarray, rioxarray, GDAL, and
+  QGIS. Covers CF-1.8 grid_mapping, 1D coordinate arrays, Zarr v2/v3 dimension
+  declarations, multiscales, and the optional <code>proj:</code> / <code>spatial:</code>
+  namespaces.
+features:
+  - "Author from xarray/rioxarray with <code>rio.write_crs</code> &mdash; emits a compliant <code>spatial_ref</code> grid mapping variable"
+  - "Patch existing stores in place: add <code>grid_mapping</code>, 1D coord arrays, and <code>Conventions</code> without rewriting chunks"
+  - "Cell-center coords vs pixel-edge GeoTransform &mdash; the half-pixel offset rule that fixes the most common round-trip bug"
+  - "Zarr v2 (<code>_ARRAY_DIMENSIONS</code>) and v3 (<code>dimension_names</code>) idioms"
+  - "Optional layered conventions: <code>proj:</code>, <code>spatial:</code>, and multiscales pyramids"
+  - "Validate via rioxarray <code>rio.crs</code> and <code>gdalinfo 'ZARR:&quot;...&quot;:/var'</code>"
+example_html: |
+  <span class="com"># verify the toolchain</span>
+  <span class="dim">$</span> python -c <span class="arg">"import zarr, xarray; print(zarr.__version__, xarray.__version__)"</span>
 
-# GeoZarr
+  <span class="com"># round-trip CRS through rioxarray</span>
+  <span class="dim">$</span> python -c <span class="arg">"import xarray as xr, rioxarray; print(xr.open_zarr('store.zarr').data_var.rio.crs)"</span>
 
-</div>
-
-Author, patch, and validate georeferenced Zarr stores for xarray, rioxarray, GDAL, and QGIS.
-
-<div class="skill-callout">
-  <p class="skill-callout-label">Tools</p>
-  <p><code>xarray</code>, <code>rioxarray</code>, <code>zarr</code>, and <code>gdalinfo</code>.</p>
-</div>
-
-## Install
-
-=== "Universal"
-
-    ```bash
-    cp -R skills/geozarr ~/.agent/skills/geozarr
-    ```
-
-=== "Claude"
-
-    ```bash
-    /plugin marketplace add isaaccorley/geospatial-skills
-    /plugin install geozarr@geospatial-skills
-    ```
-
-    CLI:
-
-    ```bash
-    claude plugin marketplace add isaaccorley/geospatial-skills
-    claude plugin install geozarr@geospatial-skills
-    ```
-
-## Common tasks
-
-1. Author a Zarr store that round-trips as a georeferenced raster.
-1. Audit stores that open without CRS or transform metadata.
-1. Patch CF grid mapping metadata without rewriting data chunks.
-1. Choose between Zarr v2 and v3 dimension declarations.
-1. Add optional `proj:`, `spatial:`, or multiscale metadata for target readers.
-
-## Essential checks
-
-```bash
-# Tool versions
-python -c "import zarr, xarray; print('zarr', zarr.__version__, 'xarray', xarray.__version__)"
-gdalinfo --version
-
-# Round-trip CRS through rioxarray
-python -c "import xarray as xr, rioxarray; print(xr.open_zarr('store.zarr').data_var.rio.crs)"
-
-# GDAL view
-gdalinfo 'ZARR:"store.zarr":/data_var'
-```
-
-## Minimum metadata
-
-- root `Conventions`
-- scalar `spatial_ref` or `crs` grid mapping variable
-- `grid_mapping` attribute on each georeferenced data array
-- spatial coordinate arrays for rectilinear grids
-- dimension declarations on every array
-- consolidated metadata when supported by the target Zarr format and library
-
-## Source
-
-<div class="source-panel" markdown>
-
-- Skill: [skills/geozarr/SKILL.md](https://github.com/isaaccorley/geospatial-skills/blob/main/skills/geozarr/SKILL.md)
-- GeoZarr draft: [zarr-developers/geozarr-spec](https://github.com/zarr-developers/geozarr-spec)
-- Rendered draft: [zarr.dev/geozarr-spec](https://zarr.dev/geozarr-spec/documents/standard/template/geozarr-spec.html)
-- GDAL Zarr driver: [gdal.org Zarr driver docs](https://gdal.org/en/latest/drivers/raster/zarr.html)
-
-</div>
+  <span class="com"># GDAL view of a single Zarr array</span>
+  <span class="dim">$</span> gdalinfo <span class="arg">'ZARR:"store.zarr":/data_var'</span>
+prev:
+  slug: geoparquet-validation
+  name: GeoParquet Validation
+next:
+  slug: tessera
+  name: Tessera
+hide:
+  - toc
+  - navigation
+  - footer
+---

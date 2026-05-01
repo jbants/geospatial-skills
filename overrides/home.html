@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block site_meta %}
+  {{ super() }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block header %}{% endblock %}
+{% block tabs %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block container %}
+<div class="wrap">
+  <div class="head">
+    <a class="globe-mini" href="."></a>
+    <a class="brand" href="."><b>geospatial</b>-skills</a>
+    <div class="meta">
+      <a href="{{ config.repo_url }}">github</a>
+      <a href="{{ config.repo_url }}/blob/main/LICENSE">apache-2.0</a>
+    </div>
+  </div>
+
+  <div class="intro">
+    <h1>Geospatial skills for agents.</h1>
+    <p>A growing catalog of geospatial skills &mdash; raster, vector, embeddings, viewers, and frontend scaffolds &mdash; one shared source for whichever agent you use.</p>
+  </div>
+
+  <div class="install" data-default="skills">
+    <div class="tabs">
+      <button data-k="skills">SKILLS.SH</button>
+      <button data-k="universal">UNIVERSAL</button>
+      <button data-k="claude">CLAUDE</button>
+      <button data-k="cli">CLI</button>
+    </div>
+    <div class="cmd">
+      <div class="line"><span class="dim">$</span><span class="cmdtext"></span></div>
+      <button class="copy">COPY</button>
+    </div>
+  </div>
+
+  <div class="sec" id="catalog"><span>&sect; Catalog</span><span><span class="accent">06</span> / 06</span></div>
+  <a class="row" href="skills/gdal/"><div><div class="name">GDAL</div><div class="desc">Command-line workflows for raster and vector geospatial processing.</div></div><div class="tag">RASTER+VECTOR</div><div class="arrow">&rarr;</div></a>
+  <a class="row" href="skills/geoparquet-validation/"><div><div class="name">GeoParquet Validation</div><div class="desc">Inspect, validate, optimize, and distribute GeoParquet data with gpio.</div></div><div class="tag">CLOUD-NATIVE</div><div class="arrow">&rarr;</div></a>
+  <a class="row" href="skills/geozarr/"><div><div class="name">GeoZarr</div><div class="desc">Author, patch, and validate georeferenced Zarr stores.</div></div><div class="tag">ARRAYS</div><div class="arrow">&rarr;</div></a>
+  <a class="row" href="skills/tessera/"><div><div class="name">Tessera</div><div class="desc">Download TESSERA satellite embeddings via CLI, Python, or R.</div></div><div class="tag">EMBEDDINGS</div><div class="arrow">&rarr;</div></a>
+  <a class="row" href="skills/geospatial-viewers/"><div><div class="name">Geospatial Viewers</div><div class="desc">Interactive raster, vector, and terminal-inline geospatial viewers.</div></div><div class="tag">VISUALIZATION</div><div class="arrow">&rarr;</div></a>
+  <a class="row" href="skills/geospatial-frontend/"><div><div class="name">Geospatial Frontend</div><div class="desc">Map-centric demo webapps with MapLibre globe, DuckDB-WASM, and warm dark HUD.</div></div><div class="tag">FRONTEND</div><div class="arrow">&rarr;</div></a>
+
+  <div class="foot"><span>Apache-2.0 &middot; isaaccorley</span><span><a href="{{ config.repo_url }}">github.com/isaaccorley/geospatial-skills</a></span></div>
+</div>
+{% endblock %}
+
+{% block content %}{% endblock %}
