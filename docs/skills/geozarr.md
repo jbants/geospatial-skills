@@ -10,7 +10,7 @@ upstream:
   - label: GDAL Zarr driver
     href: https://gdal.org/en/latest/drivers/raster/zarr.html
 license: Apache-2.0
-requires: "<code>zarr</code>, <code>xarray</code>, <code>rioxarray</code>; GDAL with Zarr driver for round-trip checks"
+requires: <code>zarr</code>, <code>xarray</code>, <code>rioxarray</code>; GDAL with Zarr driver for round-trip checks
 summary: >-
   Conventions guide for authoring, patching, and validating georeferenced Zarr
   stores so they round-trip as rasters through xarray, rioxarray, GDAL, and
@@ -18,12 +18,12 @@ summary: >-
   declarations, multiscales, and the optional <code>proj:</code> / <code>spatial:</code>
   namespaces.
 features:
-  - "Author from xarray/rioxarray with <code>rio.write_crs</code> &mdash; emits a compliant <code>spatial_ref</code> grid mapping variable"
-  - "Patch existing stores in place: add <code>grid_mapping</code>, 1D coord arrays, and <code>Conventions</code> without rewriting chunks"
-  - "Cell-center coords vs pixel-edge GeoTransform &mdash; the half-pixel offset rule that fixes the most common round-trip bug"
-  - "Zarr v2 (<code>_ARRAY_DIMENSIONS</code>) and v3 (<code>dimension_names</code>) idioms"
-  - "Optional layered conventions: <code>proj:</code>, <code>spatial:</code>, and multiscales pyramids"
-  - "Validate via rioxarray <code>rio.crs</code> and <code>gdalinfo 'ZARR:&quot;...&quot;:/var'</code>"
+  - Author from xarray/rioxarray with <code>rio.write_crs</code> &mdash; emits a compliant <code>spatial_ref</code> grid mapping variable
+  - 'Patch existing stores in place: add <code>grid_mapping</code>, 1D coord arrays, and <code>Conventions</code> without rewriting chunks'
+  - Cell-center coords vs pixel-edge GeoTransform &mdash; the half-pixel offset rule that fixes the most common round-trip bug
+  - Zarr v2 (<code>_ARRAY_DIMENSIONS</code>) and v3 (<code>dimension_names</code>) idioms
+  - 'Optional layered conventions: <code>proj:</code>, <code>spatial:</code>, and multiscales pyramids'
+  - Validate via rioxarray <code>rio.crs</code> and <code>gdalinfo 'ZARR:&quot;...&quot;:/var'</code>
 example_html: |
   <span class="com"># verify the toolchain</span>
   <span class="dim">$</span> python -c <span class="arg">"import zarr, xarray; print(zarr.__version__, xarray.__version__)"</span>

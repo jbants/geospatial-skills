@@ -12,7 +12,7 @@ upstream:
   - label: nkeikon/inlineviewer
     href: https://github.com/nkeikon/inlineviewer
 license: Apache-2.0
-requires: "<code>uv</code> / <code>uvx</code> on PATH; rasters/vectors via PyPI extras"
+requires: <code>uv</code> / <code>uvx</code> on PATH; rasters/vectors via PyPI extras
 summary: >-
   Three CLI tools for quick-look inspection of geospatial data, all run via
   <code>uvx</code> so nothing pollutes the project environment:
@@ -20,12 +20,12 @@ summary: >-
   viewer), and <code>viewinline</code> (terminal-inline preview for rasters,
   vectors, CSV, and Parquet).
 features:
-  - "Interactive Qt raster viewer (<code>viewtif</code>) &mdash; GeoTIFF, HDF, NetCDF, FileGDB"
-  - "Interactive Qt vector viewer (<code>viewgeom</code>) &mdash; GeoJSON, Shapefile, GeoPackage, GeoParquet"
-  - "Terminal-inline preview (<code>viewinline</code>) for rasters, vectors, CSV, and Parquet &mdash; works over SSH"
-  - "DuckDB-backed filtering: <code>viewgeom --duckdb &quot;SELECT ...&quot;</code>"
-  - "CSV/Parquet stats and plots: <code>--describe</code>, <code>--hist</code>, <code>--scatter</code>, <code>--sql</code>"
-  - "Auto-installable via <code>uvx</code> &mdash; no env setup"
+  - Interactive Qt raster viewer (<code>viewtif</code>) &mdash; GeoTIFF, HDF, NetCDF, FileGDB
+  - Interactive Qt vector viewer (<code>viewgeom</code>) &mdash; GeoJSON, Shapefile, GeoPackage, GeoParquet
+  - Terminal-inline preview (<code>viewinline</code>) for rasters, vectors, CSV, and Parquet &mdash; works over SSH
+  - 'DuckDB-backed filtering: <code>viewgeom --duckdb &quot;SELECT ...&quot;</code>'
+  - 'CSV/Parquet stats and plots: <code>--describe</code>, <code>--hist</code>, <code>--scatter</code>, <code>--sql</code>'
+  - Auto-installable via <code>uvx</code> &mdash; no env setup
 example_html: |
   <span class="com"># interactive raster preview with an RGB band combo</span>
   <span class="dim">$</span> uvx viewtif <span class="arg">image.tif</span> --rgb <span class="arg">4 3 2</span>

@@ -8,19 +8,19 @@ upstream:
   - label: geoparquet-io/geoparquet-skill
     href: https://github.com/geoparquet-io/geoparquet-skill
 license: Apache-2.0
-requires: "<code>gpio</code> (geoparquet-io); DuckDB optional for SQL"
+requires: <code>gpio</code> (geoparquet-io); DuckDB optional for SQL
 summary: >-
   Inspect, validate, optimize, and distribute GeoParquet data with
   <code>gpio</code>. Centered on the <code>gpio</code> toolchain &mdash;
   inspection, auto-fix validation, conversion with sane defaults, partitioning,
   and STAC publishing &mdash; with DuckDB available for heavier SQL.
 features:
-  - "Inspect metadata and stats: <code>gpio inspect</code>, <code>gpio inspect stats</code>"
-  - "Validate &amp; auto-fix: <code>gpio check all</code> (with <code>--fix</code>)"
-  - "Convert with GeoParquet defaults: <code>gpio convert geoparquet</code>"
-  - "Extract by bbox or predicate: <code>gpio extract --bbox</code> / <code>--where</code>"
-  - "Partition large datasets: <code>gpio partition kdtree</code>"
-  - "Publish to STAC and upload: <code>gpio publish stac</code> / <code>publish upload</code>"
+  - 'Inspect metadata and stats: <code>gpio inspect</code>, <code>gpio inspect stats</code>'
+  - 'Validate &amp; auto-fix: <code>gpio check all</code> (with <code>--fix</code>)'
+  - 'Convert with GeoParquet defaults: <code>gpio convert geoparquet</code>'
+  - 'Extract by bbox or predicate: <code>gpio extract --bbox</code> / <code>--where</code>'
+  - 'Partition large datasets: <code>gpio partition kdtree</code>'
+  - 'Publish to STAC and upload: <code>gpio publish stac</code> / <code>publish upload</code>'
 example_html: |
   <span class="com"># inspect, then validate-and-fix in place</span>
   <span class="dim">$</span> gpio inspect stats <span class="arg">data.parquet</span>

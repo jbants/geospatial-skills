@@ -15,13 +15,13 @@ summary: >-
   reprojection, clipping, format translation, and metadata reads &mdash; without
   reinventing flags.
 features:
-  - "Inspect with <code>gdalinfo</code> / <code>ogrinfo</code>"
+  - Inspect with <code>gdalinfo</code> / <code>ogrinfo</code>
   - Reproject rasters and vectors between any CRS pair
-  - "Clip rasters by cutline (<code>gdalwarp -cutline</code>) or vectors by bbox / geometry"
-  - "Convert formats and band-subset (<code>gdal_translate</code>, <code>ogr2ogr</code>)"
-  - "Build mosaics with <code>gdalbuildvrt</code> + <code>gdal_translate</code>"
-  - "Rasterize vectors and tile rasters (<code>gdal_rasterize</code>, <code>gdal2tiles.py</code>)"
-  - "Emit Cloud-Optimized GeoTIFFs with <code>-of COG</code>"
+  - Clip rasters by cutline (<code>gdalwarp -cutline</code>) or vectors by bbox / geometry
+  - Convert formats and band-subset (<code>gdal_translate</code>, <code>ogr2ogr</code>)
+  - Build mosaics with <code>gdalbuildvrt</code> + <code>gdal_translate</code>
+  - Rasterize vectors and tile rasters (<code>gdal_rasterize</code>, <code>gdal2tiles.py</code>)
+  - Emit Cloud-Optimized GeoTIFFs with <code>-of COG</code>
 example_html: |
   <span class="com"># reproject a GeoTIFF</span>
   <span class="dim">$</span> gdalwarp -t_srs <span class="arg">epsg:4326</span> INPUT.tif OUTPUT.tif

@@ -18,10 +18,10 @@ summary: >-
   straight to clustering, similarity search, or downstream fine-tuning.
 features:
   - Download embeddings by bbox or region file (GeoJSON / Shapefile)
-  - "Output as GeoTIFF (default, georeferenced), NPY, or Zarr"
+  - Output as GeoTIFF (default, georeferenced), NPY, or Zarr
   - Sample embeddings at point locations from the Python library
   - Build mosaics for dense per-pixel raster analysis
-  - "R bindings via <code>GeoTessera</code> (<code>geotessera()</code>, <code>get_tiles</code>, <code>export_embedding_geotiffs</code>)"
+  - R bindings via <code>GeoTessera</code> (<code>geotessera()</code>, <code>get_tiles</code>, <code>export_embedding_geotiffs</code>)
   - Coverage checks and configurable registry / cache
 example_html: |
   <span class="com"># download as GeoTIFF (default, with georeferencing)</span>
