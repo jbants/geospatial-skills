@@ -7,7 +7,6 @@ install_skill: gdal
 upstream:
   - label: microsoft/ai4eutils geospatial recipes
     href: https://github.com/microsoft/ai4eutils/blob/master/geospatial/recipes_and_guides/geospatial_recipes.md
-version: "0.1.0"
 license: Apache-2.0
 requires: GDAL on PATH
 summary: >-
@@ -38,8 +37,4 @@ example_html: |
 next:
   slug: geoparquet-validation
   name: GeoParquet Validation
-hide:
-  - toc
-  - navigation
-  - footer
 ---

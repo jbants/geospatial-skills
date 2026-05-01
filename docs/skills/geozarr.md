@@ -9,7 +9,6 @@ upstream:
     href: https://github.com/zarr-developers/geozarr-spec
   - label: GDAL Zarr driver
     href: https://gdal.org/en/latest/drivers/raster/zarr.html
-version: "0.1.0"
 license: Apache-2.0
 requires: "<code>zarr</code>, <code>xarray</code>, <code>rioxarray</code>; GDAL with Zarr driver for round-trip checks"
 summary: >-
@@ -40,8 +39,4 @@ prev:
 next:
   slug: tessera
   name: Tessera
-hide:
-  - toc
-  - navigation
-  - footer
 ---

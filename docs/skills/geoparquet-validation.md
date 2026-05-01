@@ -7,7 +7,6 @@ install_skill: geoparquet-validation
 upstream:
   - label: geoparquet-io/geoparquet-skill
     href: https://github.com/geoparquet-io/geoparquet-skill
-version: "0.1.0"
 license: Apache-2.0
 requires: "<code>gpio</code> (geoparquet-io); DuckDB optional for SQL"
 summary: >-
@@ -40,8 +39,4 @@ prev:
 next:
   slug: geozarr
   name: GeoZarr
-hide:
-  - toc
-  - navigation
-  - footer
 ---

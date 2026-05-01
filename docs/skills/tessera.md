@@ -9,7 +9,6 @@ upstream:
     href: https://github.com/ucam-eo/geotessera
   - label: lassa-sentinel/GeoTessera (R)
     href: https://github.com/lassa-sentinel/GeoTessera
-version: "0.1.0"
 license: Apache-2.0 (skill); embeddings under the TESSERA project license
 requires: Python 3.10+ or R &ge; 4.2
 summary: >-
@@ -48,8 +47,4 @@ prev:
 next:
   slug: geospatial-viewers
   name: Geospatial Viewers
-hide:
-  - toc
-  - navigation
-  - footer
 ---

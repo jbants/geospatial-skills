@@ -4,7 +4,6 @@ title: Geospatial Frontend
 slug: geospatial-frontend
 tag: FRONTEND
 install_skill: geospatial-frontend
-version: "0.1.0"
 license: Apache-2.0
 requires: Node + a modern browser with WASM
 summary: >-
@@ -29,8 +28,4 @@ example_html: |
 prev:
   slug: geospatial-viewers
   name: Geospatial Viewers
-hide:
-  - toc
-  - navigation
-  - footer
 ---

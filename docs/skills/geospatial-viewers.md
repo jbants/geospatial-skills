@@ -11,7 +11,6 @@ upstream:
     href: https://github.com/nkeikon/geomviewer
   - label: nkeikon/inlineviewer
     href: https://github.com/nkeikon/inlineviewer
-version: "0.1.0"
 license: Apache-2.0
 requires: "<code>uv</code> / <code>uvx</code> on PATH; rasters/vectors via PyPI extras"
 summary: >-
@@ -47,8 +46,4 @@ prev:
 next:
   slug: geospatial-frontend
   name: Geospatial Frontend
-hide:
-  - toc
-  - navigation
-  - footer
 ---
