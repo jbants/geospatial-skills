@@ -4,8 +4,6 @@
 
 A collection of separately installable geospatial `SKILL.md` packages for AI coding agents.
 
-Site: <https://jbants.github.io/geospatial-skills/>
-
 ## Install
 
 The recommended path is [`skills.sh`](https://skills.sh) — a single-line install that works across most agents:
