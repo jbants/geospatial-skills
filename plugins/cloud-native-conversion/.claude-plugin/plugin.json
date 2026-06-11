@@ -1,0 +1,22 @@
+{
+  "author": {
+    "name": "James Banting"
+  },
+  "description": "Convert raster or vector geospatial data to cloud-native formats. Use when converting to COG (Cloud-Optimized GeoTIFF), converting to GeoParquet, or asked to make data cloud-optimized. Covers rio-cogeo for rasters and gpio for vectors.",
+  "homepage": "https://jbants.github.io/geospatial-skills/",
+  "keywords": [
+    "cog",
+    "cloud-optimized-geotiff",
+    "geoparquet",
+    "rio-cogeo",
+    "gpio",
+    "cloud-native",
+    "geospatial",
+    "raster",
+    "vector"
+  ],
+  "license": "Apache-2.0",
+  "name": "cloud-native-conversion",
+  "repository": "https://github.com/jbants/geospatial-skills",
+  "version": "0.1.0"
+}

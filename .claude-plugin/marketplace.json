@@ -104,6 +104,23 @@
       "name": "geospatial-frontend",
       "source": "./plugins/geospatial-frontend",
       "version": "0.1.0"
+    },
+    {
+      "description": "Convert raster or vector geospatial data to cloud-native formats. Use when converting to COG (Cloud-Optimized GeoTIFF), converting to GeoParquet, or asked to make data cloud-optimized. Covers rio-cogeo for rasters and gpio for vectors.",
+      "keywords": [
+        "cog",
+        "cloud-optimized-geotiff",
+        "geoparquet",
+        "rio-cogeo",
+        "gpio",
+        "cloud-native",
+        "geospatial",
+        "raster",
+        "vector"
+      ],
+      "name": "cloud-native-conversion",
+      "source": "./plugins/cloud-native-conversion",
+      "version": "0.1.0"
     }
   ]
 }

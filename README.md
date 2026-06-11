@@ -21,6 +21,7 @@ npx skills add jbants/geospatial-skills/geozarr
 npx skills add jbants/geospatial-skills/tessera
 npx skills add jbants/geospatial-skills/geospatial-viewers
 npx skills add jbants/geospatial-skills/geospatial-frontend
+npx skills add jbants/geospatial-skills/cloud-native-conversion
 ```
 
 Other paths:
@@ -43,6 +44,7 @@ cp -R skills/<skill> ~/.agent/skills/<skill>
 | `tessera`               | TESSERA embedding downloads via the `geotessera` CLI / Python / R libraries |
 | `geospatial-viewers`    | `viewtif` / `viewgeom` / `viewinline` quick-look CLIs (run via `uvx`)       |
 | `geospatial-frontend`   | Map-centric demo webapps with MapLibre globe + DuckDB-WASM                  |
+| `cloud-native-conversion` | Convert rasters to COG and vectors to GeoParquet with cloud-native defaults |
 
 ## Layout
 
