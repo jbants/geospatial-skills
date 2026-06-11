@@ -1,8 +1,8 @@
 site_name: geospatial-skills
-site_url: https://isaac.earth/geospatial-skills/
+site_url: https://jbants.github.io/geospatial-skills/
 site_description: Installable geospatial skills for AI coding agents
-repo_url: https://github.com/isaaccorley/geospatial-skills
-repo_name: isaaccorley/geospatial-skills
+repo_url: https://github.com/jbants/geospatial-skills
+repo_name: jbants/geospatial-skills
 strict: true
 
 theme:

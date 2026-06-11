@@ -1,8 +1,10 @@
 # geospatial-skills
 
+> **Fork** of [isaaccorley/geospatial-skills](https://github.com/isaaccorley/geospatial-skills) by James Banting. Original site: <https://isaac.earth/geospatial-skills/>
+
 A collection of separately installable geospatial `SKILL.md` packages for AI coding agents.
 
-Site: <https://isaac.earth/geospatial-skills/>
+Site: <https://jbants.github.io/geospatial-skills/>
 
 ## Install
 
@@ -10,15 +12,15 @@ The recommended path is [`skills.sh`](https://skills.sh) — a single-line insta
 
 ```bash
 # install everything
-npx skills add isaaccorley/geospatial-skills
+npx skills add jbants/geospatial-skills
 
 # or install one skill at a time
-npx skills add isaaccorley/geospatial-skills/gdal
-npx skills add isaaccorley/geospatial-skills/geoparquet-validation
-npx skills add isaaccorley/geospatial-skills/geozarr
-npx skills add isaaccorley/geospatial-skills/tessera
-npx skills add isaaccorley/geospatial-skills/geospatial-viewers
-npx skills add isaaccorley/geospatial-skills/geospatial-frontend
+npx skills add jbants/geospatial-skills/gdal
+npx skills add jbants/geospatial-skills/geoparquet-validation
+npx skills add jbants/geospatial-skills/geozarr
+npx skills add jbants/geospatial-skills/tessera
+npx skills add jbants/geospatial-skills/geospatial-viewers
+npx skills add jbants/geospatial-skills/geospatial-frontend
 ```
 
 Other paths:

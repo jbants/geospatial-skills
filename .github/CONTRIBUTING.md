@@ -8,7 +8,9 @@
 
 ## Docs
 
-- canonical URL: `https://isaac.earth/geospatial-skills/`
+This is a fork of [isaaccorley/geospatial-skills](https://github.com/isaaccorley/geospatial-skills) maintained by James Banting. Original upstream site: <https://isaac.earth/geospatial-skills/>
+
+- canonical URL: `https://jbants.github.io/geospatial-skills/`
 - local dev:
 
 ```bash
@@ -42,4 +44,4 @@ uv run mkdocs build --strict
 
 Set repository Pages source to GitHub Actions. Published site should resolve at:
 
-- `https://isaac.earth/geospatial-skills/`
+- `https://jbants.github.io/geospatial-skills/`

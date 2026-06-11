@@ -59,11 +59,11 @@
 
   <div class="sec"><span>&sect; Details</span></div>
   <dl class="meta-grid">
-    <dt>Packaged by</dt><dd><a href="https://github.com/isaaccorley">@isaaccorley</a></dd>
+    <dt>Packaged by</dt><dd><a href="https://github.com/{{ m.packaged_by | default('isaaccorley') }}">@{{ m.packaged_by | default('isaaccorley') }}</a></dd>
     {% if m.upstream %}<dt>Upstream</dt><dd>{% for u in m.upstream %}<a href="{{ u.href }}">{{ u.label }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</dd>{% endif %}
     <dt>License</dt><dd>{{ m.license | default('Apache-2.0') | safe }}</dd>
     <dt>Requires</dt><dd>{{ m.requires | safe }}</dd>
-    <dt>Source</dt><dd><a href="{{ config.repo_url }}/tree/main/skills/{{ m.install_skill }}">github.com/isaaccorley/geospatial-skills</a></dd>
+    <dt>Source</dt><dd><a href="{{ config.repo_url }}/tree/main/skills/{{ m.install_skill }}">github.com/jbants/geospatial-skills</a></dd>
   </dl>
 
   <div class="skillnav">
@@ -71,7 +71,7 @@
     {% if m.next %}<a class="next" href="../{{ m.next.slug }}/"><span class="dir">NEXT &rarr;</span><span class="name">{{ m.next.name }}</span></a>{% else %}<a class="empty" href="#"></a>{% endif %}
   </div>
 
-  <div class="foot"><span>Apache-2.0 &middot; isaaccorley</span><span><a href="{{ config.repo_url }}">github.com/isaaccorley/geospatial-skills</a></span></div>
+  <div class="foot"><span>Apache-2.0 &middot; Fork by <a href="https://github.com/jbanting">jbanting</a> &middot; Original by <a href="https://github.com/isaaccorley">isaaccorley</a></span><span><a href="{{ config.repo_url }}">github.com/jbants/geospatial-skills</a></span></div>
 </div>
 {% endblock %}
 
